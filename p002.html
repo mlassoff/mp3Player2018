@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Build | MP3 Player</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    </head>
+    <body>
+        <div data-role="page"> 
+	       <div data-role="header">MP3 Player</div> 
+	       <div data-role="content">
+               <audio id="music">
+                   <source src="suspense.mp3" />
+               </audio>
+               <button id="btnPlay">Play</button>
+               <button id="btnPause">Pause</button>
+               <button id="btnStop">Stop</button>
+           </div> 
+	       <div data-role="footer">BUILD</div> 
+        </div>  <!-- page -->
+        <script>
+            var play = document.getElementById('btnPlay');
+            var pause = document.getElementById('btnPause');
+            var stop = document.getElementById('btnStop');
+            var player = document.getElementById('music');
+            
+            play.addEventListener('click', playMusic, false);
+            pause.addEventListener('click', pauseMusic, false);
+            stop.addEventListener('click', stopMusic, false);
+            
+            function playMusic(e)
+            {
+                player.play();
+            }
+            
+            function pauseMusic(e)
+            {
+                player.pause();
+            }
+            
+            function stopMusic(e)
+            {
+                player.pause();
+                player.currentTime= 0;
+            }
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Build | MP3 Player</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <style>
+            volDiv{
+                margin-bottom: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div data-role="page"> 
+	       <div data-role="header">MP3 Player</div> 
+	       <div data-role="content">
+               <audio id="music">
+                   <source src="suspense.mp3" />
+               </audio>
+               <div><ul id="songList" data-role="listview"></ul></div>
+               <button id="btnPlay">Play</button>
+               <button id="btnPause">Pause</button>
+               <button id="btnStop">Stop</button>
+               <label for="sldVolume">Volume</label>
+               <div id="volDiv"><input type="range" name= "sldVolume" id = "sldVolume" min="0" max="100" value="50" /></div>
+               
+           </div> 
+	       <div data-role="footer">BUILD</div> 
+        </div>  <!-- page -->
+        <script>
+            var play = document.getElementById('btnPlay');
+            var pause = document.getElementById('btnPause');
+            var stop = document.getElementById('btnStop');
+            var player = document.getElementById('music');
+            
+            play.addEventListener('click', playMusic, false);
+            pause.addEventListener('click', pauseMusic, false);
+            stop.addEventListener('click', stopMusic, false);
+            
+            
+            function playMusic(e)
+            {
+                player.play();
+            }
+            
+            function pauseMusic(e)
+            {
+                player.pause();
+            }
+            
+            function stopMusic(e)
+            {
+                player.pause();
+                player.currentTime= 0;
+            }
+            
+            function makeCell(band, title, album)
+            {
+                var out="<li><h2>" + title + " By: ";
+                out +=  band + "</h2>";
+                out += "<p>" + album + "</p></li>";
+                return(out);
+            }
+            
+            
+            $(document).ready(function(){
+                $("#sldVolume").on("change", function (event) {
+                    var value = event.target.value;
+                    player.volume = value/100;
+                    
+                });
+                out = "";
+                urls = [];
+                $.getJSON("songs.json", function(data){
+                    $.each(data, function(key, val){
+                        out += makeCell(val.band, val.title, val.album);
+                        urls.push(val.url);
+                    });
+                    console.log(out);
+                    document.getElementById('songList').innerHTML = out;
+                    $('#songList').listview().listview("refresh");
+                });
+            });
+            
+        </script>
+    </body>
+</html>

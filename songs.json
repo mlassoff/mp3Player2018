@@ -1,0 +1,31 @@
+[{
+		"band": "The Hipshakes",
+		"title": "Come Back Home",
+		"album": "Live at WFMU",
+		"url": "comeBackHome.mp3"
+	},
+	{
+		"band": "Tinmouth",
+		"title": "last longer",
+		"album": "Surprise time",
+		"url": "latLonger.mp3"
+	},
+	{
+		"band": "PolyAction",
+		"title": "The Accident of 1993",
+		"album": "Baby's First Rock n' Roll",
+		"url": "accident.mp3"
+	},
+	{
+		"band": "Normcore",
+		"title": "Storm",
+		"album": "Neighbors",
+		"url": "storm.mp3"
+	},
+	{
+		"band": "Decoration",
+		"title": "Mall Walkers",
+		"album": "Live at Monty Hall",
+		"url": "mallWalkers.mp3"
+	}
+]
